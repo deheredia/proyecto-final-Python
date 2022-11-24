@@ -1,47 +1,49 @@
-CREATE TABLE "datos usuarios" (
-	"id_datos"	INTEGER NOT NULL UNIQUE,
-	"id_usuario"	INTEGER NOT NULL UNIQUE,
-	"nombre"	TEXT(50) NOT NULL,
-	"apellido"	TEXT(25) NOT NULL,
-	"id_direccion"	INTEGER NOT NULL UNIQUE,
-	"edad"	INTEGER,
-	PRIMARY KEY("id_datos" AUTOINCREMENT)
+CREATE TABLE "Datos_Usuarios" (
+	"Id_Datos"	INTEGER NOT NULL UNIQUE,
+	"Id_Usuario"	INTEGER NOT NULL UNIQUE,
+	"Nombre"	TEXT(50) NOT NULL,
+	"Apellido"	TEXT(25) NOT NULL,
+	"Id_Direccion"	INTEGER NOT NULL UNIQUE,
+	"Edad"	INTEGER,
+	"DNI"	INTEGER,
+	PRIMARY KEY("Id_Datos" AUTOINCREMENT)
 )
 
-CREATE TABLE "direccion usuario" (
-	"id_direccion"	INTEGER NOT NULL UNIQUE,
-	"calle"	TEXT(50) NOT NULL,
-	"numero"	INTEGER NOT NULL,
-	"barrio"	TEXT(50),
-	"ciudad"	TEXT(50) NOT NULL,
-	"provincia"	TEXT(25) NOT NULL,
-	"pais"	TEXT(25) NOT NULL,
-	PRIMARY KEY("id_direccion" AUTOINCREMENT)
+CREATE TABLE "Direccion_Usuario" (
+	"Id_Direccion"	INTEGER NOT NULL UNIQUE,
+	"Calle"	TEXT(50) NOT NULL,
+	"Numero"	INTEGER NOT NULL,
+	"Barrio"	TEXT(50),
+	"Ciudad"	TEXT(50) NOT NULL,
+	"Provincia"	TEXT(25) NOT NULL,
+	"Pais"	TEXT(25) NOT NULL,
+	PRIMARY KEY("Id_Direccion" AUTOINCREMENT)
 )
 
-CREATE TABLE "productos" (
-	"id_productos"	INTEGER NOT NULL UNIQUE,
-	"id_usuario"	INTEGER NOT NULL UNIQUE,
-	"descripcion"	TEXT NOT NULL,
-	"entradas"	INTEGER,
-	"salidas"	INTEGER,
-	"stock"	INTEGER,
-	PRIMARY KEY("id_productos" AUTOINCREMENT)
+CREATE TABLE "Productos" (
+	"Id_Productos"	INTEGER NOT NULL UNIQUE,
+	"Id_Usuario"	INTEGER NOT NULL UNIQUE,
+	"Descripcion"	TEXT NOT NULL,
+	"Entradas"	INTEGER,
+	"Salidas"	INTEGER,
+	"Stock"	INTEGER,
+	"Precio"	REAL NOT NULL,
+	PRIMARY KEY("Id_Productos" AUTOINCREMENT)
 )
 
-CREATE TABLE "usuarios" (
-	"id_usuario"	INTEGER NOT NULL,
-	"nombre_usuario"	TEXT(50) NOT NULL UNIQUE,
-	"mail"	TEXT(50) NOT NULL UNIQUE,
-	"es_activo"	INTEGER NOT NULL DEFAULT 1,
-	PRIMARY KEY("id_usuario" AUTOINCREMENT)
+CREATE TABLE "Usuarios" (
+	"Id_Usuario"	INTEGER NOT NULL,
+	"Nombre_Usuario"	TEXT(50) NOT NULL UNIQUE,
+	"Mail"	TEXT(50) NOT NULL UNIQUE,
+	"Es_Activo"	INTEGER NOT NULL DEFAULT 1,
+	PRIMARY KEY("Id_Usuario" AUTOINCREMENT)
 )
 
-CREATE TABLE "ventas" (
-	"id_ventas"	INTEGER NOT NULL UNIQUE,
-	"id_productos"	INTEGER NOT NULL UNIQUE,
-	"fecha"	INTEGER NOT NULL,
-	"codigo_producto"	INTEGER NOT NULL,
-	"cantidad_vendidas"	INTEGER,
-	PRIMARY KEY("id_ventas" AUTOINCREMENT)
+CREATE TABLE "Ventas" (
+	"Id_ventas"	INTEGER NOT NULL UNIQUE,
+	"Id_productos"	INTEGER NOT NULL UNIQUE,
+	"Fecha"	INTEGER NOT NULL,
+	"Codigo_producto"	INTEGER NOT NULL,
+	"Cantidad_vendidas"	INTEGER,
+	PRIMARY KEY("Id_Ventas" AUTOINCREMENT)
 )
