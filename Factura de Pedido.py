@@ -14,14 +14,6 @@ class App:
         root.geometry(alignstr)
         root.resizable(width=False, height=False)
 
-        GMessage_280=tk.Message(root)
-        ft = tkFont.Font(family='Times',size=10)
-        GMessage_280["font"] = ft
-        GMessage_280["fg"] = "#cc0000"
-        GMessage_280["justify"] = "center"
-        GMessage_280["text"] = "SUPERMARKET"
-        GMessage_280.place(x=190,y=20,width=207,height=30)
-
         GLabel_309=tk.Label(root)
         ft = tkFont.Font(family='Times',size=10)
         GLabel_309["font"] = ft
@@ -54,7 +46,7 @@ class App:
         GLineEdit_551["fg"] = "#333333"
         GLineEdit_551["justify"] = "center"
         GLineEdit_551["text"] = "Entry"
-        GLineEdit_551.place(x=260,y=60,width=69,height=30)
+        GLineEdit_551.place(x=270,y=60,width=69,height=30)
 
         GLabel_114=tk.Label(root)
         ft = tkFont.Font(family='Times',size=10)
@@ -160,6 +152,15 @@ class App:
         GButton_730["text"] = "CANCELAR"
         GButton_730.place(x=490,y=430,width=79,height=37)
         GButton_730["command"] = self.GButton_730_command
+
+        GLabel_179=tk.Label(root)
+        GLabel_179["borderwidth"] = "0px"
+        ft = tkFont.Font(family='Times',size=20)
+        GLabel_179["font"] = ft
+        GLabel_179["fg"] = "#cc0000"
+        GLabel_179["justify"] = "center"
+        GLabel_179["text"] = "Super Market"
+        GLabel_179.place(x=220,y=10,width=192,height=30)
 
     def GButton_240_command(self):
         print("command")
