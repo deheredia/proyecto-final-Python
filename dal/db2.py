@@ -2,7 +2,7 @@ import sqlite3
 from datetime import date
 import hashlib
 
-database = "super.db" # todo: por ahora ponemos el nombre de la base aqui, ver mejor opcion
+database = "Supermarket.db" # todo: por ahora ponemos el nombre de la base aqui, ver mejor opcion
 
 class Db:
     @staticmethod
@@ -25,24 +25,29 @@ class Db:
     
     @staticmethod
     def crear_tablas():
-        sql_usuarios = '''CREATE TABLE IF NOT EXISTS "Usuarios" (
-                                "UsuarioId"	INTEGER NOT NULL,
-                                "Apellido"	VARCHAR(50),
-                                "Nombre"	VARCHAR(30),
-                                "FechaNacimiento"	VARCHAR(23),
-                                "Dni"	INTEGER,
-                                "CorreoElectronico"	VARCHAR(30),
-                                "Usuario"	VARCHAR(15) UNIQUE,
-                                "Contrasenia"	VARCHAR(100),
-                                "RolId"	INTEGER,
-                                "Activo"	INTEGER NOT NULL DEFAULT 1,
-                                PRIMARY KEY("UsuarioId" AUTOINCREMENT)
-                            );'''
-        sql_roles = '''CREATE TABLE IF NOT EXISTS "Roles" (
-                            "RolId"	INTEGER NOT NULL,
-                            "Nombre"	VARCHAR(30) NOT NULL UNIQUE,
+        sql_usuarios = '''CREATE TABLE "Usuarios" (
+                            "Id_usuario"	INTEGER NOT NULL,
+                            "Nombre"	TEXT(40) NOT NULL,
+                            "Aapellido"	TEXT(40) NOT NULL,
+                            "DNI"	INTEGER(20) NOT NULL,
+                            "Fecha_Nacimiento"	TEXT(10) NOT NULL,
+                            "Email"	TEXT(30) NOT NULL,
+                            "Domicilio"	TEXT(30) NOT NULL,
+                            "Nro_Telefonico" INTEGER(20) NOT NULL,
+                            "Usuario" TEXT(30) NOT NULL UNIQUE,
+                            "Contraseña" TEXT(30) NOT NULL UNIQUE,
+                            "Rol_Id" INTEGER,
                             "Activo"	INTEGER NOT NULL DEFAULT 1,
-                            PRIMARY KEY("RolId")
+                            "Pedido_id"	INTEGER,
+                            PRIMARY KEY("Id_usuario" AUTOINCREMENT),
+                            FOREIGN KEY("Rol_Id") REFERENCES "Roles"("Id_rol"),
+                            FOREIGN KEY("Pedido_id") REFERENCES "Pedidos"("Id_pedido")
+                        );'''
+        sql_roles = '''CREATE TABLE "Roles" (
+                            "Id_rol"	INTEGER NOT NULL,
+                            "Rol"	TEXT(50) NOT NULL UNIQUE,
+                            "Activo"	INTEGER NOT NULL DEFAULT 1,
+                            PRIMARY KEY("Id_rol")
                         );'''
 
         tablas = {"Usuarios": sql_usuarios, "Roles": sql_roles}
@@ -52,11 +57,12 @@ class Db:
             for tabla, sql in tablas.items():
                 print(f"Creando tabla {tabla}")
                 cursor.execute(sql)
+                #cnn.commit() #
                 # TODO agregar commit
             
     @staticmethod
     def poblar_tablas():        
-        sql_roles = '''INSERT INTO Roles (RolId, Nombre) 
+        sql_roles = '''INSERT INTO Roles (RolId, Rol) 
                     VALUES 
                         (1, "Administrador"),
                         (2, "Supervisor"),
@@ -70,9 +76,11 @@ class Db:
             for tabla, sql in tablas.items():
                 print(f"Poblando tabla {tabla}")
                 cursor.execute(f"SELECT COUNT(*) FROM {tabla}")
+                #cnn.commit() #
                 count = int(cursor.fetchone()[0])
                 if count == 0:
                     cursor.execute(sql)
+                    #cnn.commit() #
 
     @staticmethod
     def formato_fecha_db(fecha):

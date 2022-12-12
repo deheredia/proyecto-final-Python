@@ -1,4 +1,4 @@
-from dal.db import Db
+from dal.db2 import Db
 
 def agregar(nombre, apellido, dni, fecha_nac, email, domicilio, telefono, usuario, contrasenia, rol_Id):    
     sql = "INSERT INTO Usuarios(Nombre, Apellido, DNI, Fecha_Nacimiento, Email, Domicilio, Nro_Telefonico, Usuario, Contraseña, Rol_Id) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?);"
