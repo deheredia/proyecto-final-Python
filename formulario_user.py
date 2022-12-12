@@ -1,3 +1,5 @@
+#import tkinter as tk
+#import tkinter.font as tkFont
 from tkinter import *
 import tkinter.ttk as ttk
 import tkinter.font as tkFont
@@ -250,7 +252,7 @@ class User(Toplevel):
         if isAdmin:
             cb_roles = ttk.Combobox(self, state="readonly", values=list(roles.values()), name="cbRoles")
         else:
-            cb_roles = ttk.Combobox(self, state="disabled", values=list(roles.values()), name="cbRoles")
+            cb_roles = ttk.Combobox(self, state="disable", values=list(roles.values()), name="cbRoles")
             cb_roles.set(roles[4])
         cb_roles.place(x=200,y=500,width=149,height=25)
 
@@ -294,6 +296,9 @@ class User(Toplevel):
                 GLineEdit_920.insert(0, usuario[9])               
                 cb_roles.set(usuario[10])
 
+    def cancelar(self):
+        self.destroy()
+
     def get_value(self, name):
         return self.nametowidget(name).get()
 
@@ -322,7 +327,7 @@ class User(Toplevel):
             if self.user_id is None:
                 print("Alta de usuario")
                 if not user.existe(usuario):
-                    user.agregar(apellido, nombre, fecha_nac, dni, email, usuario, contrasenia, rol_id)
+                    user.agregar(nombre, apellido, dni, fecha_nac, email, domicilio, telefono, usuario, contrasenia, rol_id)
                     tkMsgBox.showinfo(self.master.title(), "Registro agregado!!!!!!")                
                     try:
                         self.master.refrescar()
@@ -333,7 +338,7 @@ class User(Toplevel):
                     tkMsgBox.showwarning(self.master.title(), "Usuario existente en nuestros registros")
             else:
                 print("Actualizacion de usuario")
-                user.actualizar(self.user_id, apellido, nombre, fecha_nac, dni, email, contrasenia, rol_id)  # TODO ver el tema de la contraseña
+                user.actualizar(self.user_id, nombre, apellido, dni, fecha_nac, email, domicilio, telefono, contrasenia, rol_id)  # TODO ver el tema de la contraseña
                 tkMsgBox.showinfo(self.master.title(), "Registro modificado!!!!!!")                
                 self.master.refrescar()
                 self.destroy()  
@@ -341,6 +346,5 @@ class User(Toplevel):
         except Exception as ex:
             tkMsgBox.showerror(self.master.title(), str(ex))
 
-    def cancelar(self):
-        self.destroy()
+    
 

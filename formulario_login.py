@@ -7,11 +7,14 @@ import bll.usuarios as user
 
 
 class Login(tk.Toplevel):
+#class Login:
+    #def __init__(self, root):
     def __init__(self, master=None):
         super().__init__(master)
         self.master = master
-        #setting title
         self.title("Login")
+        #setting title
+        #root.title("Supermarket")
         #setting window size
         width=585
         height=186
@@ -20,6 +23,8 @@ class Login(tk.Toplevel):
         alignstr = '%dx%d+%d+%d' % (width, height, (screenwidth - width) / 2, (screenheight - height) / 2)
         self.geometry(alignstr)
         self.resizable(width=False, height=False)
+        #root.geometry(alignstr)
+        #root.resizable(width=False, height=False)
 
         GLineEdit_575=tk.Entry(self, name="txtUsuario")
         GLineEdit_575["borderwidth"] = "1px"
@@ -63,6 +68,7 @@ class Login(tk.Toplevel):
         GButton_507["fg"] = "#f51616"
         GButton_507["justify"] = "center"
         GButton_507["text"] = "Crear cuenta"
+        #GButton_507["relief"] = "groove"
         GButton_507.place(x=10,y=130,width=137,height=30)
         GButton_507["command"] = self.abrir_user
 
