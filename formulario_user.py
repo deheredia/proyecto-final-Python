@@ -1,5 +1,3 @@
-import tkinter as tk
-import tkinter.font as tkFont
 from tkinter import *
 import tkinter.ttk as ttk
 import tkinter.font as tkFont
@@ -7,21 +5,21 @@ import tkinter.messagebox as tkMsgBox
 import bll.usuarios as user
 import bll.roles as rol
 
-
 class User(Toplevel):
-    def __init__(self, master=None, isAdmin = False, user_id = None):
+    def __init__(self, master=None, isAdmin = False, user_id = None):        
         super().__init__(master)
-        self.master = master        
+        self.master = master
+        self.user_id = user_id        
         self.title("Registro de cuenta")
         width=559
-        height=591
-        screenwidth = self.winfo_screenwidth()
-        screenheight = self.winfo_screenheight()
+        height=600
+        screenwidth = master.winfo_screenwidth()
+        screenheight = master.winfo_screenheight()
         alignstr = '%dx%d+%d+%d' % (width, height, (screenwidth - width) / 2, (screenheight - height) / 2)
         self.geometry(alignstr)
         self.resizable(width=False, height=False)
 
-        GLabel_966=tk.Label(self)
+        GLabel_966= Label(self)
         GLabel_966["borderwidth"] = "0px"
         ft = tkFont.Font(family='Times',size=20)
         GLabel_966["font"] = ft
@@ -30,7 +28,17 @@ class User(Toplevel):
         GLabel_966["text"] = "Supermarket"
         GLabel_966.place(x=120,y=0,width=314,height=30)
 
-        GLabel_702=tk.Label(self)
+        GLabel_965= Label(self)
+        GLabel_965["borderwidth"] = "0px"
+        ft = tkFont.Font(family='Times',size=10)
+        GLabel_965["font"] = ft
+        GLabel_965["fg"] = "#cc0000"
+        GLabel_965["justify"] = "center"
+        GLabel_965["text"] = "_______________________________DATOS DE LA PERSONALES: ____________________________________"
+        GLabel_965.place(x=0,y=30,width=554,height=30)
+
+
+        GLabel_702= Label(self)
         GLabel_702["anchor"] = "e"
         ft = tkFont.Font(family='Times',size=13)
         GLabel_702["font"] = ft
@@ -48,7 +56,7 @@ class User(Toplevel):
         GLineEdit_728["text"] = ""
         GLineEdit_728.place(x=140,y=70,width=405,height=25)
 
-        GLabel_351=tk.Label(self)
+        GLabel_351= Label(self)
         GLabel_351["anchor"] = "e"
         ft = tkFont.Font(family='Times',size=13)
         GLabel_351["font"] = ft
@@ -66,7 +74,7 @@ class User(Toplevel):
         GLineEdit_893["text"] = ""
         GLineEdit_893.place(x=140,y=110,width=406,height=25)
 
-        GLabel_767=tk.Label(self)
+        GLabel_767 = Label(self)
         GLabel_767["anchor"] = "e"
         ft = tkFont.Font(family='Times',size=13)
         GLabel_767["font"] = ft
@@ -84,7 +92,7 @@ class User(Toplevel):
         GLineEdit_41["text"] = ""
         GLineEdit_41.place(x=140,y=150,width=183,height=25)
 
-        GLabel_415=tk.Label(self)
+        GLabel_415= Label(self)
         GLabel_415["anchor"] = "e"
         ft = tkFont.Font(family='Times',size=13)
         GLabel_415["font"] = ft
@@ -102,7 +110,16 @@ class User(Toplevel):
         GLineEdit_585["text"] = ""
         GLineEdit_585.place(x=140,y=190,width=243,height=25)
 
-        GLabel_23=tk.Label(self)
+        GLabel_529= Label(self)
+        GLabel_529["anchor"] = "e"
+        ft = tkFont.Font(family='Times',size=10)
+        GLabel_529["font"] = ft
+        GLabel_529["fg"] = "#333333"
+        GLabel_529["justify"] = "center"
+        GLabel_529["text"] = "AAAA-MM-DD"
+        GLabel_529.place(x=370,y=190,width=141,height=25)
+
+        GLabel_23= Label(self)
         GLabel_23["anchor"] = "e"
         ft = tkFont.Font(family='Times',size=13)
         GLabel_23["font"] = ft
@@ -120,7 +137,7 @@ class User(Toplevel):
         GLineEdit_655["text"] = ""
         GLineEdit_655.place(x=140,y=230,width=342,height=25)
 
-        GLabel_688=tk.Label(self)
+        GLabel_688= Label(self)
         GLabel_688["anchor"] = "e"
         ft = tkFont.Font(family='Times',size=13)
         GLabel_688["font"] = ft
@@ -138,32 +155,41 @@ class User(Toplevel):
         GLineEdit_908["text"] = ""
         GLineEdit_908.place(x=140,y=270,width=407,height=25)
 
-        GLabel_167=tk.Label(self)
+        GLabel_172= Label(self)
+        GLabel_172["anchor"] = "e"
+        ft = tkFont.Font(family='Times',size=13)
+        GLabel_172["font"] = ft
+        GLabel_172["fg"] = "#333333"
+        GLabel_172["justify"] = "right"
+        GLabel_172["text"] = "Nro Telefonico:"
+        GLabel_172.place(x=10,y=310,width=120,height=25)
+
+        GLineEdit_534=Entry(self, name="txtNroTelefonico")
+        GLineEdit_534["borderwidth"] = "1px"
+        ft = tkFont.Font(family='Times',size=10)
+        GLineEdit_534["font"] = ft
+        GLineEdit_534["fg"] = "#333333"
+        GLineEdit_534["justify"] = "left"
+        GLineEdit_534["text"] = ""
+        GLineEdit_534.place(x=140,y=310,width=243,height=25)
+
+        GLabel_167= Label(self)
         GLabel_167["borderwidth"] = "0px"
         ft = tkFont.Font(family='Times',size=10)
         GLabel_167["font"] = ft
         GLabel_167["fg"] = "#cc0000"
         GLabel_167["justify"] = "center"
         GLabel_167["text"] = "________________________________DATOS DE LA CUENTA: ___________________________________"
-        GLabel_167.place(x=0,y=300,width=564,height=30)
+        GLabel_167.place(x=0,y=340,width=564,height=30)
 
-        GLabel_529=tk.Label(self)
-        GLabel_529["anchor"] = "e"
-        ft = tkFont.Font(family='Times',size=10)
-        GLabel_529["font"] = ft
-        GLabel_529["fg"] = "#333333"
-        GLabel_529["justify"] = "center"
-        GLabel_529["text"] = "AAAA-MM-DD"
-        GLabel_529.place(x=370,y=190,width=141,height=25)
-
-        GLabel_256=tk.Label(self)
+        GLabel_256= Label(self)
         GLabel_256["anchor"] = "e"
         ft = tkFont.Font(family='Times',size=13)
         GLabel_256["font"] = ft
         GLabel_256["fg"] = "#333333"
         GLabel_256["justify"] = "right"
         GLabel_256["text"] = "Usuario:"
-        GLabel_256.place(x=0,y=340,width=190,height=25)
+        GLabel_256.place(x=0,y=380,width=190,height=25)
 
         GLineEdit_944=Entry(self, name="txtUsuario")
         GLineEdit_944["borderwidth"] = "1px"
@@ -172,16 +198,16 @@ class User(Toplevel):
         GLineEdit_944["fg"] = "#333333"
         GLineEdit_944["justify"] = "left"
         GLineEdit_944["text"] = ""
-        GLineEdit_944.place(x=200,y=340,width=320,height=25)
+        GLineEdit_944.place(x=200,y=380,width=320,height=25)
 
-        GLabel_95=tk.Label(self)
+        GLabel_95= Label(self)
         GLabel_95["anchor"] = "e"
         ft = tkFont.Font(family='Times',size=13)
         GLabel_95["font"] = ft
         GLabel_95["fg"] = "#333333"
         GLabel_95["justify"] = "right"
         GLabel_95["text"] = "Contraseña:"
-        GLabel_95.place(x=0,y=380,width=190,height=25)
+        GLabel_95.place(x=0,y=420,width=190,height=25)
 
         GLineEdit_920= Entry(self, show="*", name="txtContrasenia")
         GLineEdit_920["borderwidth"] = "1px"
@@ -190,16 +216,16 @@ class User(Toplevel):
         GLineEdit_920["fg"] = "#333333"
         GLineEdit_920["justify"] = "left"
         GLineEdit_920["text"] = ""
-        GLineEdit_920.place(x=200,y=380,width=320,height=25)
+        GLineEdit_920.place(x=200,y=420,width=320,height=25)
 
-        GLabel_304=tk.Label(self)
+        GLabel_304= Label(self)
         GLabel_304["anchor"] = "e"
         ft = tkFont.Font(family='Times',size=13)
         GLabel_304["font"] = ft
         GLabel_304["fg"] = "#333333"
         GLabel_304["justify"] = "right"
         GLabel_304["text"] = "Confirmar contraseña:"
-        GLabel_304.place(x=0,y=420,width=190,height=25)
+        GLabel_304.place(x=0,y=460,width=190,height=25)
 
         GLineEdit_903= Entry(self, show="*", name="txtConfirmacion")
         GLineEdit_903["borderwidth"] = "1px"
@@ -208,16 +234,16 @@ class User(Toplevel):
         GLineEdit_903["fg"] = "#333333"
         GLineEdit_903["justify"] = "left"
         GLineEdit_903["text"] = ""
-        GLineEdit_903.place(x=200,y=420,width=320,height=25)
+        GLineEdit_903.place(x=200,y=460,width=320,height=25)
 
-        GLabel_184=tk.Label(self)
+        GLabel_184= Label(self)
         GLabel_184["anchor"] = "e"
         ft = tkFont.Font(family='Times',size=13)
         GLabel_184["font"] = ft
         GLabel_184["fg"] = "#333333"
         GLabel_184["justify"] = "right"
         GLabel_184["text"] = "Rol:"
-        GLabel_184.place(x=0,y=460,width=190,height=25)
+        GLabel_184.place(x=0,y=500,width=190,height=25)
 
         roles = dict(rol.listar())
         if isAdmin:
@@ -225,37 +251,28 @@ class User(Toplevel):
         else:
             cb_roles = ttk.Combobox(self, state="disabled", values=list(roles.values()), name="cbRoles")
             cb_roles.set(roles[4])
-        cb_roles.place(x=140,y=330,width=283,height=30)
+        cb_roles.place(x=200,y=500,width=149,height=25)
 
-        GButton_882=tk.Button(self)
+        GButton_882= Button(self)
         GButton_882["bg"] = "#f0f0f0"
         ft = tkFont.Font(family='Times',size=12)
         GButton_882["font"] = ft
         GButton_882["fg"] = "#cc0000"
         GButton_882["justify"] = "center"
         GButton_882["text"] = "ACEPTAR"
-        GButton_882.place(x=260,y=530,width=130,height=32)
-        GButton_882["command"] = self.GButton_882_command
+        GButton_882.place(x=260,y=550,width=130,height=32)
+        GButton_882["command"] = self.aceptar
 
-        GButton_129=tk.Button(self)
+        GButton_129= Button(self)
         GButton_129["bg"] = "#f0f0f0"
         ft = tkFont.Font(family='Times',size=12)
         GButton_129["font"] = ft
         GButton_129["fg"] = "#cc0000"
         GButton_129["justify"] = "center"
         GButton_129["text"] = "CANCELAR"
-        GButton_129.place(x=400,y=530,width=130,height=32)
-        GButton_129["command"] = self.GButton_129_command
-
-        GLabel_965=tk.Label(self)
-        GLabel_965["borderwidth"] = "0px"
-        ft = tkFont.Font(family='Times',size=10)
-        GLabel_965["font"] = ft
-        GLabel_965["fg"] = "#cc0000"
-        GLabel_965["justify"] = "center"
-        GLabel_965["text"] = "_______________________________DATOS DE LA PERSONALES: ____________________________________"
-        GLabel_965.place(x=0,y=30,width=554,height=30)
-
+        GButton_129.place(x=400,y=550,width=130,height=32)
+        GButton_129["command"] = self.cancelar
+        
         if user_id is not None:
             usuario = user.obtener_id(user_id)
             if usuario is None:
@@ -282,7 +299,7 @@ class User(Toplevel):
     def GButton_341_command(self):
         self.destroy()
 
-    def GButton_825_command(self):
+    def aceptar(self):
         try: 
             nombre = self.get_value("txtNombre")           
             apellido = self.get_value("txtApellido")
@@ -296,16 +313,28 @@ class User(Toplevel):
             rol_id = self.get_index("cbRoles")
 
             # TODO validar los datos antes de ingresar
-            if not user.existe(usuario):
-                user.agregar(nombre, apellido, dni, fecha_nac, email, domicilio, usuario, contrasenia, rol_id)
-                tkMsgBox.showinfo(self.master.title(), "Registro agregado!!!!!!")                
-                try:
-                    self.master.refrescar()
-                except Exception as ex:
-                    print(ex)
-                self.destroy()                
+            if self.user_id is None:
+                print("Alta de usuario")
+                if not user.existe(usuario):
+                    user.agregar(apellido, nombre, fecha_nac, dni, email, usuario, contrasenia, rol_id)
+                    tkMsgBox.showinfo(self.master.title(), "Registro agregado!!!!!!")                
+                    try:
+                        self.master.refrescar()
+                    except Exception as ex:
+                        print(ex)
+                    self.destroy()                
+                else:
+                    tkMsgBox.showwarning(self.master.title(), "Usuario existente en nuestros registros")
             else:
-                tkMsgBox.showwarning(self.master.title(), "Usuario existente en nuestros registros")
+                print("Actualizacion de usuario")
+                user.actualizar(self.user_id, apellido, nombre, fecha_nac, dni, email, contrasenia, rol_id)  # TODO ver el tema de la contraseña
+                tkMsgBox.showinfo(self.master.title(), "Registro modificado!!!!!!")                
+                self.master.refrescar()
+                self.destroy()  
+
         except Exception as ex:
             tkMsgBox.showerror(self.master.title(), str(ex))
+
+    def cancelar(self):
+        self.destroy()
 
