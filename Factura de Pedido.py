@@ -122,7 +122,7 @@ class App:
         GLabel_951["fg"] = "#333333"
         GLabel_951["justify"] = "center"
         GLabel_951["text"] = "N° DE PEDIDO"
-        GLabel_951.place(x=20,y=360,width=70,height=25)
+        GLabel_951.place(x=20,y=360,width=100,height=25)
 
         GLineEdit_993=tk.Entry(root)
         GLineEdit_993["borderwidth"] = "1px"
