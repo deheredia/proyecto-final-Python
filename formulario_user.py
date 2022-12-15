@@ -1,5 +1,3 @@
-#import tkinter as tk
-#import tkinter.font as tkFont
 from tkinter import *
 import tkinter.ttk as ttk
 import tkinter.font as tkFont
@@ -278,6 +276,7 @@ class User(Toplevel):
         
         if user_id is not None:
             usuario = user.obtener_id(user_id)
+            print(usuario)
             if usuario is None:
                tkMsgBox.showerror(self.master.title(), "Se produjo un error al obtener los datos del usuario, reintente nuevamente")
                self.destroy()
@@ -323,6 +322,19 @@ class User(Toplevel):
             rol_id = self.get_index("cbRoles")
 
             # TODO validar los datos antes de ingresar
+            if nombre == "":
+                tkMsgBox.showerror(self.master.title(), "Nombre es un valor requerido.")
+                return
+            if apellido == "":
+                tkMsgBox.showerror(self.master.title(), "Apellido es un valor requerido.")
+                return
+            # agregar los demas
+            # .....
+            
+            if contrasenia != confirmacion:
+                tkMsgBox.showerror(self.master.title(), "La contraseña con su confirmacion no tienen el mismo valor.")
+                return 
+            
             if self.user_id is None:
                 print("Alta de usuario")
                 if not user.existe(usuario):

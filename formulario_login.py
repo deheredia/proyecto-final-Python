@@ -2,20 +2,15 @@ import tkinter as tk
 import tkinter.font as tkFont
 import tkinter.messagebox as tkMsgBox
 from formulario_user import User
-from frmdashboard import Dashboard
+#from frmdashboard import Dashboard
 import bll.usuarios as user
 
 
 class Login(tk.Toplevel):
-#class Login:
-    #def __init__(self, root):
     def __init__(self, master=None):
         super().__init__(master)
         self.master = master
         self.title("Login")
-        #setting title
-        #root.title("Supermarket")
-        #setting window size
         width=585
         height=186
         screenwidth = master.winfo_screenwidth()
@@ -23,8 +18,6 @@ class Login(tk.Toplevel):
         alignstr = '%dx%d+%d+%d' % (width, height, (screenwidth - width) / 2, (screenheight - height) / 2)
         self.geometry(alignstr)
         self.resizable(width=False, height=False)
-        #root.geometry(alignstr)
-        #root.resizable(width=False, height=False)
 
         GLineEdit_575=tk.Entry(self, name="txtUsuario")
         GLineEdit_575["borderwidth"] = "1px"
@@ -96,23 +89,25 @@ class Login(tk.Toplevel):
         try:
             txtUsuario = self.nametowidget("txtUsuario")
             usuario = txtUsuario.get()
+            print(usuario)
 
             txtContrasenia = self.nametowidget("txtContrasenia")
             contrasenia = txtContrasenia.get()
-
+            print(contrasenia)
             if usuario != "":
                 if user.validar(usuario, contrasenia):                    
                     usuario = user.obtener_nombre_usuario(usuario)
+                    print(usuario)
                     if usuario is not None:
                         if usuario[10] == "Administrador":
-                            Dashboard(self.master)
-                            #self.destroy()
                             print("Mostrar pantalla para usuario con rol de Administrador")
+                            #Dashboard(self.master)
+                            #self.destroy()
                         elif usuario[10] == "Cliente":
                             # TODO chequear el rol del usuario para abrir el menu/ventana correspondiente
                             print("Mostrar pantalla para usuario con rol de Cliente")
                     else:
-                        tkMsgBox.showerror(self.master.title(), "Se produjo un error al obtener los datos del usuario, reintente nuevamente")
+                        tkMsgBox.showerror(self.master.title(), "Se produjo un error al obtener los datos del usuario, ingrese nuevamente")
                 else:
                     tkMsgBox.showwarning(self.master.title(), "Usuario/Contraseña incorrecta")
             else:
