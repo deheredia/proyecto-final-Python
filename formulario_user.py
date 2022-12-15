@@ -296,8 +296,7 @@ class User(Toplevel):
                 GLineEdit_920.insert(0, usuario[9])               
                 cb_roles.set(usuario[10])
 
-    def cancelar(self):
-        self.destroy()
+    
 
     def get_value(self, name):
         return self.nametowidget(name).get()
@@ -345,6 +344,9 @@ class User(Toplevel):
 
         except Exception as ex:
             tkMsgBox.showerror(self.master.title(), str(ex))
+
+    def cancelar(self):
+        self.destroy()
 
     
 
