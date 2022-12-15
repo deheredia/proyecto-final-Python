@@ -95,7 +95,7 @@ class Login(tk.Toplevel):
     def iniciar_sesion(self):
         try:
             txtUsuario = self.nametowidget("txtUsuario")
-            usuario = txtUsuario.get()            
+            usuario = txtUsuario.get()
 
             txtContrasenia = self.nametowidget("txtContrasenia")
             contrasenia = txtContrasenia.get()
