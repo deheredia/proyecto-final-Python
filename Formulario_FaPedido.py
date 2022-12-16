@@ -165,7 +165,7 @@ class Factura_Pedido(tk.Toplevel):
         GLabel_179.place(x=220,y=10,width=192,height=30)
 
     def GButton_240_command(self):
-        print("hola mundo")
+        print("command")
 
 
     def GButton_730_command(self):

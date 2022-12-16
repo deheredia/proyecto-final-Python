@@ -1,20 +1,22 @@
 import tkinter as tk
 import tkinter.font as tkFont
 
-class App:
-    def __init__(self, root):
+class Pedido_Usuario(tk.Toplevel):
+    def __init__(self, master=None):
         #setting title
-        root.title("undefined")
+        super().__init__(master)
+        self.master = master
+        self.title("Pedido")
         #setting window size
         width=600
         height=500
-        screenwidth = root.winfo_screenwidth()
-        screenheight = root.winfo_screenheight()
+        screenwidth = self.winfo_screenwidth()
+        screenheight = self.winfo_screenheight()
         alignstr = '%dx%d+%d+%d' % (width, height, (screenwidth - width) / 2, (screenheight - height) / 2)
-        root.geometry(alignstr)
-        root.resizable(width=False, height=False)
+        self.geometry(alignstr)
+        self.resizable(width=False, height=False)
 
-        GLabel_25=tk.Label(root)
+        GLabel_25=tk.Label(self)
         ft = tkFont.Font(family='Times',size=14)
         GLabel_25["font"] = ft
         GLabel_25["fg"] = "#cc0000"
@@ -22,7 +24,7 @@ class App:
         GLabel_25["text"] = "SUPERMARKET"
         GLabel_25.place(x=180,y=20,width=219,height=30)
 
-        GLabel_929=tk.Label(root)
+        GLabel_929=tk.Label(self)
         ft = tkFont.Font(family='Times',size=10)
         GLabel_929["font"] = ft
         GLabel_929["fg"] = "#333333"
@@ -30,7 +32,7 @@ class App:
         GLabel_929["text"] = "Buscar Nombre"
         GLabel_929.place(x=40,y=60,width=139,height=42)
 
-        GButton_713=tk.Button(root)
+        GButton_713=tk.Button(self)
         GButton_713["bg"] = "#f0f0f0"
         ft = tkFont.Font(family='Times',size=10)
         GButton_713["font"] = ft
@@ -40,7 +42,7 @@ class App:
         GButton_713.place(x=490,y=70,width=70,height=25)
         GButton_713["command"] = self.GButton_713_command
 
-        GLabel_768=tk.Label(root)
+        GLabel_768=tk.Label(self)
         ft = tkFont.Font(family='Times',size=10)
         GLabel_768["font"] = ft
         GLabel_768["fg"] = "#333333"
@@ -48,7 +50,7 @@ class App:
         GLabel_768["text"] = "Id del Producto"
         GLabel_768.place(x=40,y=100,width=138,height=30)
 
-        GLabel_80=tk.Label(root)
+        GLabel_80=tk.Label(self)
         ft = tkFont.Font(family='Times',size=10)
         GLabel_80["font"] = ft
         GLabel_80["fg"] = "#333333"
@@ -56,7 +58,7 @@ class App:
         GLabel_80["text"] = "Cantidad"
         GLabel_80.place(x=210,y=100,width=185,height=30)
 
-        GLineEdit_96=tk.Entry(root)
+        GLineEdit_96=tk.Entry(self)
         GLineEdit_96["borderwidth"] = "1px"
         ft = tkFont.Font(family='Times',size=10)
         GLineEdit_96["font"] = ft
@@ -65,7 +67,7 @@ class App:
         GLineEdit_96["text"] = ""
         GLineEdit_96.place(x=30,y=130,width=167,height=30)
 
-        GLineEdit_280=tk.Entry(root)
+        GLineEdit_280=tk.Entry(self)
         GLineEdit_280["borderwidth"] = "1px"
         ft = tkFont.Font(family='Times',size=10)
         GLineEdit_280["font"] = ft
@@ -74,7 +76,7 @@ class App:
         GLineEdit_280["text"] = ""
         GLineEdit_280.place(x=240,y=130,width=118,height=30)
 
-        GButton_217=tk.Button(root)
+        GButton_217=tk.Button(self)
         GButton_217["bg"] = "#f0f0f0"
         ft = tkFont.Font(family='Times',size=10)
         GButton_217["font"] = ft
@@ -84,7 +86,7 @@ class App:
         GButton_217.place(x=430,y=130,width=70,height=25)
         GButton_217["command"] = self.GButton_217_command
 
-        GLabel_88=tk.Label(root)
+        GLabel_88=tk.Label(self)
         ft = tkFont.Font(family='Times',size=10)
         GLabel_88["font"] = ft
         GLabel_88["fg"] = "#333333"
@@ -92,7 +94,7 @@ class App:
         GLabel_88["text"] = "Id del Producto"
         GLabel_88.place(x=10,y=160,width=206,height=30)
 
-        GLabel_234=tk.Label(root)
+        GLabel_234=tk.Label(self)
         ft = tkFont.Font(family='Times',size=10)
         GLabel_234["font"] = ft
         GLabel_234["fg"] = "#333333"
@@ -100,7 +102,7 @@ class App:
         GLabel_234["text"] = "Cantidad"
         GLabel_234.place(x=250,y=160,width=108,height=30)
 
-        GLineEdit_553=tk.Entry(root)
+        GLineEdit_553=tk.Entry(self)
         GLineEdit_553["borderwidth"] = "1px"
         ft = tkFont.Font(family='Times',size=10)
         GLineEdit_553["font"] = ft
@@ -109,7 +111,7 @@ class App:
         GLineEdit_553["text"] = ""
         GLineEdit_553.place(x=30,y=190,width=169,height=33)
 
-        GLineEdit_448=tk.Entry(root)
+        GLineEdit_448=tk.Entry(self)
         GLineEdit_448["borderwidth"] = "1px"
         ft = tkFont.Font(family='Times',size=10)
         GLineEdit_448["font"] = ft
@@ -118,7 +120,7 @@ class App:
         GLineEdit_448["text"] = ""
         GLineEdit_448.place(x=240,y=190,width=121,height=30)
 
-        GButton_753=tk.Button(root)
+        GButton_753=tk.Button(self)
         GButton_753["bg"] = "#f0f0f0"
         ft = tkFont.Font(family='Times',size=10)
         GButton_753["font"] = ft
@@ -128,7 +130,7 @@ class App:
         GButton_753.place(x=430,y=190,width=70,height=25)
         GButton_753["command"] = self.GButton_753_command
 
-        GLabel_33=tk.Label(root)
+        GLabel_33=tk.Label(self)
         ft = tkFont.Font(family='Times',size=10)
         GLabel_33["font"] = ft
         GLabel_33["fg"] = "#333333"
@@ -136,7 +138,7 @@ class App:
         GLabel_33["text"] = "Id del Producto"
         GLabel_33.place(x=50,y=220,width=125,height=30)
 
-        GLabel_761=tk.Label(root)
+        GLabel_761=tk.Label(self)
         ft = tkFont.Font(family='Times',size=10)
         GLabel_761["font"] = ft
         GLabel_761["fg"] = "#333333"
@@ -144,7 +146,7 @@ class App:
         GLabel_761["text"] = "Cantidad"
         GLabel_761.place(x=250,y=220,width=114,height=30)
 
-        GLineEdit_160=tk.Entry(root)
+        GLineEdit_160=tk.Entry(self)
         GLineEdit_160["borderwidth"] = "1px"
         ft = tkFont.Font(family='Times',size=10)
         GLineEdit_160["font"] = ft
@@ -153,7 +155,7 @@ class App:
         GLineEdit_160["text"] = ""
         GLineEdit_160.place(x=30,y=250,width=165,height=30)
 
-        GLineEdit_65=tk.Entry(root)
+        GLineEdit_65=tk.Entry(self)
         ft = tkFont.Font(family='Times',size=12)
         GLineEdit_65["font"] = ft
         GLineEdit_65["fg"] = "#333333"
@@ -161,7 +163,7 @@ class App:
         GLineEdit_65["text"] = ""
         GLineEdit_65.place(x=0,y=0,width=0,height=0)
 
-        GButton_504=tk.Button(root)
+        GButton_504=tk.Button(self)
         GButton_504["bg"] = "#f0f0f0"
         ft = tkFont.Font(family='Times',size=10)
         GButton_504["font"] = ft
@@ -171,7 +173,7 @@ class App:
         GButton_504.place(x=430,y=250,width=70,height=25)
         GButton_504["command"] = self.GButton_504_command
 
-        GLineEdit_768=tk.Entry(root)
+        GLineEdit_768=tk.Entry(self)
         GLineEdit_768["borderwidth"] = "1px"
         ft = tkFont.Font(family='Times',size=10)
         GLineEdit_768["font"] = ft
@@ -180,7 +182,7 @@ class App:
         GLineEdit_768["text"] = ""
         GLineEdit_768.place(x=170,y=60,width=270,height=30)
 
-        GLabel_713=tk.Label(root)
+        GLabel_713=tk.Label(self)
         ft = tkFont.Font(family='Times',size=10)
         GLabel_713["font"] = ft
         GLabel_713["fg"] = "#333333"
@@ -188,7 +190,7 @@ class App:
         GLabel_713["text"] = "Descripcion del Producto"
         GLabel_713.place(x=180,y=290,width=206,height=30)
 
-        GLineEdit_466=tk.Entry(root)
+        GLineEdit_466=tk.Entry(self)
         GLineEdit_466["borderwidth"] = "1px"
         ft = tkFont.Font(family='Times',size=10)
         GLineEdit_466["font"] = ft
@@ -197,7 +199,7 @@ class App:
         GLineEdit_466["text"] = "Entry"
         GLineEdit_466.place(x=40,y=360,width=535,height=92)
 
-        GLabel_705=tk.Label(root)
+        GLabel_705=tk.Label(self)
         ft = tkFont.Font(family='Times',size=10)
         GLabel_705["font"] = ft
         GLabel_705["fg"] = "#333333"
@@ -220,7 +222,6 @@ class App:
     def GButton_504_command(self):
         print("command")
 
-if __name__ == "__main__":
-    root = tk.Tk()
-    app = App(root)
-    root.mainloop()
+        self.mainloop()   
+
+
