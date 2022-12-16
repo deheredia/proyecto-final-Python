@@ -6,7 +6,7 @@ class Pedido_Usuario(tk.Toplevel):
         #setting title
         super().__init__(master)
         self.master = master
-        self.title("Pedido")
+        self.title("Productos")
         #setting window size
         width=600
         height=500
@@ -222,6 +222,6 @@ class Pedido_Usuario(tk.Toplevel):
     def GButton_504_command(self):
         print("command")
 
-        self.mainloop()   
+        self.mainloop()      
 
 
