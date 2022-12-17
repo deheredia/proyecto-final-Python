@@ -2,7 +2,7 @@ import tkinter as tk
 import tkinter.font as tkFont
 import tkinter.messagebox as tkMsgBox
 from frmuser import User
-from frmdashboard import Dashboard
+from formulario_tableroAdmi import Dashboard
 import bll.usuarios as user
 
 class Login(tk.Toplevel):
