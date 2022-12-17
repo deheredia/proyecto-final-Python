@@ -2,8 +2,10 @@ import tkinter as tk
 import tkinter.font as tkFont
 import tkinter.messagebox as tkMsgBox
 from formulario_user import User
-#from frmdashboard import Dashboard
+from frmdashboard import Dashboard
 import bll.usuarios as user
+from formulario_usuario import Pedido_Usuario
+
 
 
 class Login(tk.Toplevel):
@@ -101,9 +103,11 @@ class Login(tk.Toplevel):
                     if usuario is not None:
                         if usuario[10] == "Administrador":
                             print("Mostrar pantalla para usuario con rol de Administrador")
+                            Dashboard(self.master)
+                            self.destroy()
+                        elif usuario[10] == "Cliente":
                             #Dashboard(self.master)
                             #self.destroy()
-                        elif usuario[10] == "Cliente":
                             # TODO chequear el rol del usuario para abrir el menu/ventana correspondiente
                             print("Mostrar pantalla para usuario con rol de Cliente")
                     else:
@@ -120,3 +124,6 @@ class Login(tk.Toplevel):
 
     def abrir_user(self):
         User(self.master)
+
+    def abrir_Pedido_Usuario(self):
+        Pedido_Usuario(self.master)  

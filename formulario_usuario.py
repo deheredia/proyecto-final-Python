@@ -222,6 +222,6 @@ class Pedido_Usuario(tk.Toplevel):
     def GButton_504_command(self):
         print("command")
 
-        self.mainloop()      
+              
 
 
