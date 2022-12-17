@@ -106,8 +106,8 @@ class Login(tk.Toplevel):
                             Dashboard(self.master)
                             self.destroy()
                         elif usuario[10] == "Cliente":
-                            #Dashboard(self.master)
-                            #self.destroy()
+                            Dashboard(self.master)
+                            self.destroy()
                             # TODO chequear el rol del usuario para abrir el menu/ventana correspondiente
                             print("Mostrar pantalla para usuario con rol de Cliente")
                     else:
@@ -122,8 +122,8 @@ class Login(tk.Toplevel):
     def cancelar(self):
         self.destroy()
 
+    def abrir_Pedido_Usuario(self):
+        Pedido_Usuario(self.master)    
+
     def abrir_user(self):
         User(self.master)
-
-    def abrir_Pedido_Usuario(self):
-        Pedido_Usuario(self.master)  
