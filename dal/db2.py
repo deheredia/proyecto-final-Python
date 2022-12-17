@@ -50,7 +50,21 @@ class Db:
                             PRIMARY KEY("Id_rol")
                         );'''
 
-        tablas = {"Usuarios": sql_usuarios, "Roles": sql_roles}
+        sql_productos = '''CREATE TABLE IF NOT EXISTS "Productos" (
+                                "Id_producto"	INTEGER NOT NULL,
+                                "Nombre_producto"	TEXT(30) NOT NULL,
+                                "Descripcion"	TEXT(50) NOT NULL,
+                                "Marca_producto"	TEXT(30) NOT NULL,
+                                "Precio"	REAL(10) NOT NULL,
+                                "Cantidad"	INTEGER NOT NULL,
+                                "Fecha_elaboracion"	TEXT(20) NOT NULL,
+                                "fehca_vencimiento"	TEXT(20) NOT NULL,
+                                "Categoria_id"	INTEGER,
+                                PRIMARY KEY("Id_producto" AUTOINCREMENT),
+                                FOREIGN KEY("Categoria_id") REFERENCES "Categorias de Productos"("Id_categoria")
+                            );'''
+
+        tablas = {"Usuarios": sql_usuarios, "Roles": sql_roles, "Productos": sql_productos}
 
         with sqlite3.connect(database) as cnn:
             cursor = cnn.cursor()
